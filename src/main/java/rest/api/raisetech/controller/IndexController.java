@@ -2,15 +2,14 @@ package rest.api.raisetech.controller;
 
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import rest.api.raisetech.domain.CreateForm;
+import rest.api.raisetech.domain.UpdateName;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class IndexController {
@@ -29,6 +28,11 @@ public class IndexController {
                 .build()
                 .toUri();
         return ResponseEntity.created(url).body("name successfully created!!");
+    }
+
+    @PatchMapping("/names/{id}")
+    public ResponseEntity<Map<String,String>> updateName(@PathVariable int id, @RequestBody UpdateName names){
+        return ResponseEntity.ok(Map.of("message","name successfully updated!!"));
     }
 
 }
