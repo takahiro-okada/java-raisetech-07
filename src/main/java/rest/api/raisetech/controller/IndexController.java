@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import rest.api.raisetech.domain.CreateForm;
+import rest.api.raisetech.domain.DeleteName;
 import rest.api.raisetech.domain.UpdateName;
 
 import java.net.URI;
@@ -30,9 +31,17 @@ public class IndexController {
         return ResponseEntity.created(url).body("name successfully created!!");
     }
 
+    //    PATCH
     @PatchMapping("/names/{id}")
     public ResponseEntity<Map<String,String>> updateName(@PathVariable int id, @RequestBody UpdateName names){
         return ResponseEntity.ok(Map.of("message","name successfully updated!!"));
+    }
+
+    //    DELETE
+    @DeleteMapping("names/{id}")
+    public ResponseEntity<Map<String,String>> deleteName(@PathVariable int id, @RequestBody
+    DeleteName names){
+        return ResponseEntity.ok(Map.of("message","name successfully deleted!"));
     }
 
 }
