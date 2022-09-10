@@ -34,11 +34,13 @@ public class IndexController {
     return ResponseEntity.created(url).body("name successfully created!!");
   }
 
-    //    PATCH
-    @PatchMapping("/names/{id}")
-    public ResponseEntity<Map<String,String>> updateName(@PathVariable int id, @RequestBody UpdateName names){
-        return ResponseEntity.ok(Map.of("message","name successfully updated!!"));
-    }
+  //    PATCH
+  @PatchMapping("/names/{id}")
+
+  public String updateName(@PathVariable int id,
+                           @RequestBody UpdateName names) {
+    return ("name successfully updated!!");
+  }
 
   //    DELETE
   @DeleteMapping("names/{id}")
